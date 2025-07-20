@@ -1,6 +1,6 @@
 'use client';
 
-import { Message } from '@/lib/types';
+import { Message } from '@/types';
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";

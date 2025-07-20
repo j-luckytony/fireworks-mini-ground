@@ -1,13 +1,18 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useChat, useModels } from '@/hooks';
-import { ChatContainer } from '@/components/chat';
-import { PlaygroundHeader, PlaygroundControls, StatusBar } from '@/components/playground';
+import { useState } from "react";
+import { useChat, useModels } from "@/hooks";
+import { ChatContainer } from "@/components/chat";
+import {
+  PlaygroundHeader,
+  PlaygroundControls,
+  StatusBar,
+} from "@/components/playground";
 
 export default function Home() {
-  const { models, selectedModel, setSelectedModel, isLoading: isLoadingModels, error: modelsError } = useModels();
-  const { messages, isLoading, sendMessage, clearMessages, messagesEndRef } = useChat(selectedModel);
+  const { selectedModel, setSelectedModel } = useModels();
+  const { messages, isLoading, sendMessage, clearMessages, messagesEndRef } =
+    useChat(selectedModel);
   const [showTiming, setShowTiming] = useState(false);
 
   const toggleTiming = () => {
@@ -17,13 +22,12 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background p-4">
       <div className="max-w-4xl mx-auto">
-        <PlaygroundHeader 
-          title="Mini Model Playground" 
-          subtitle="Test and interact with Fireworks AI models" 
+        <PlaygroundHeader
+          title="Mini Model Playground"
+          subtitle="Test and interact with Fireworks AI models"
         />
-        
+
         <PlaygroundControls
-          selectedModel={selectedModel}
           onModelChange={setSelectedModel}
           showTiming={showTiming}
           onToggleTiming={toggleTiming}

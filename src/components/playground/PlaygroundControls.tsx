@@ -1,12 +1,16 @@
-import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { Eye, EyeOff, Trash2 } from 'lucide-react';
+import React from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { Eye, EyeOff, Trash2 } from "lucide-react";
 
-import { ModelSelector } from '.';
+import { ModelSelector } from ".";
 
 interface PlaygroundControlsProps {
-  selectedModel: string | null;
   onModelChange: (model: string | null) => void;
   showTiming: boolean;
   onToggleTiming: () => void;
@@ -15,7 +19,6 @@ interface PlaygroundControlsProps {
 }
 
 function PlaygroundControls({
-  selectedModel,
   onModelChange,
   showTiming,
   onToggleTiming,
@@ -26,9 +29,7 @@ function PlaygroundControls({
     <div className="bg-card rounded-lg shadow-sm border p-6 mb-6">
       <div className="flex flex-col sm:flex-row gap-4 items-end">
         <div className="flex-1">
-          <ModelSelector
-            onModelChange={onModelChange}
-          />
+          <ModelSelector onModelChange={onModelChange} />
         </div>
         <div className="flex gap-2">
           <TooltipProvider>
@@ -45,11 +46,15 @@ function PlaygroundControls({
                   ) : (
                     <Eye className="h-4 w-4" />
                   )}
-                  {showTiming ? 'Hide Timing' : 'Show Timing'}
+                  {showTiming ? "Hide Timing" : "Show Timing"}
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
-                <p>{showTiming ? 'Hide timing metrics' : 'Show response time and token statistics'}</p>
+                <p>
+                  {showTiming
+                    ? "Hide timing metrics"
+                    : "Show response time and token statistics"}
+                </p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>

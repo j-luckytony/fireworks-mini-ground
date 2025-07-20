@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fireworks Mini Ground
 
-## Getting Started
+A minimal playground for testing and interacting with Fireworks AI models. Built with Next.js, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## How to Run Locally
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1. **Clone and install:**
+   ```bash
+   git clone <repository-url>
+   cd fireworks-mini-ground
+   npm install
+   ```
+
+2. **Set up your API key:**
+   ```bash
+   cp env.example .env.local
+   ```
+   
+   Add your Fireworks API key to `.env.local`:
+   ```
+   FIREWORKS_API_KEY=your_api_key_here
+   ```
+   
+   Get your API key: [https://app.fireworks.ai/settings/users/api-keys](https://app.fireworks.ai/settings/users/api-keys)
+
+3. **Start the dev server:**
+   ```bash
+   npm run dev
+   ```
+   
+   Open [http://localhost:3000](http://localhost:3000)
+
+## Hosted Version
+
+[**Live Demo**](https://fireworks-mini-ground.vercel.app/)
+
+## Example Prompts
+
+Here are some example prompts I used while building this project:
+
+**For generating the initial structure:**
+```
+"Create a Next.js playground app for testing Fireworks AI models with real-time chat interface, model selection dropdown, and clean UI using shadcn/ui components."
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**For adding features:**
+```
+"Add timing analytics to show response time and token counts, with a toggle button to show/hide this information."
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**For improving the chat experience:**
+```
+"Implement streaming responses with Server-Sent Events so users can see the AI response being generated in real-time."
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**For project structure and organization:**
+```
+"Refactor this into a custom React hook called useModels that handles fetching available models, loading states, and error handling. Make it reusable across components."
+```
 
-## Learn More
+**For component architecture:**
+```
+"Split the chat functionality into separate components: ChatContainer for the message list, ChatMessage for individual messages, and ChatInput for the input form. Use proper TypeScript interfaces."
+```
 
-To learn more about Next.js, take a look at the following resources:
+**For API service layer:**
+```
+"Create an API service class that abstracts all Fireworks API calls with proper error handling, request/response typing, and consistent endpoint management."
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**For naming conventions and cleanup:**
+```
+"Review the codebase and suggest better naming conventions for components, hooks, and types. Ensure all file names follow consistent patterns and improve code readability."
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Design Decisions
 
-## Deploy on Vercel
+**Tech Stack Choices:**
+- **Next.js 15**: Full-stack framework for both frontend and API routes
+- **TypeScript**: Type safety and better developer experience  
+- **Tailwind CSS + shadcn/ui**: Rapid UI development with consistent design system
+- **Server-Sent Events**: Real-time streaming without WebSocket complexity
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Architecture:**
+- API routes proxy Fireworks calls to keep API keys secure
+- Model selector manages its own state via custom hook
+- Streaming responses for better UX during long completions
+- Simple component structure with clear separation of concerns
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Potential Improvements
+
+- [ ] **Unit Testing**: Add comprehensive test coverage for components, hooks, and API routes
+- [ ] **Conversation History**: Persist chats in localStorage or database with session management
+- [ ] **Design Improvements**: Better visual hierarchy, loading animations, and user feedback
+- [ ] **Mobile Responsive**: Optimize layout and interactions for smaller screens
+- [ ] **Image Support**: Add image input support and proper image rendering in chat messages

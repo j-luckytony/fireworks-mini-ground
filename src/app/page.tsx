@@ -1,13 +1,11 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useChat, useModels } from "@/hooks";
-import { ChatContainer } from "@/components/chat";
-import {
-  PlaygroundHeader,
-  PlaygroundControls,
-  StatusBar,
-} from "@/components/playground";
+import { useState } from 'react';
+
+import { useChat, useModels } from '@/hooks';
+
+import { ChatContainer } from '@/components/chat';
+import { PlaygroundControls, PlaygroundHeader, StatusBar } from '@/components/playground';
 
 export default function Home() {
   const { selectedModel, setSelectedModel } = useModels();
@@ -20,8 +18,8 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background p-4">
-      <div className="max-w-4xl mx-auto">
+    <div className="bg-background min-h-screen p-4">
+      <div className="mx-auto max-w-4xl">
         <PlaygroundHeader
           title="Mini Model Playground"
           subtitle="Test and interact with Fireworks AI models"
@@ -44,10 +42,7 @@ export default function Home() {
           messagesEndRef={messagesEndRef}
         />
 
-        <StatusBar
-          selectedModel={selectedModel}
-          messageCount={messages.length}
-        />
+        <StatusBar selectedModel={selectedModel} messageCount={messages.length} />
       </div>
     </div>
   );

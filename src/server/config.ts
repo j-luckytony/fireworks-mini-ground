@@ -6,7 +6,7 @@ export const FIREWORKS_CONFIG = {
   // API endpoints
   BASE_URL: 'https://api.fireworks.ai/inference/v1',
   MODELS_URL: 'https://app.fireworks.ai/api/models/mini-playground',
-  
+
   // Chat completions configuration
   CHAT_DEFAULTS: {
     stream: true,
@@ -16,11 +16,11 @@ export const FIREWORKS_CONFIG = {
     frequency_penalty: 0,
     presence_penalty: 0,
   },
-  
+
   // Request configuration
   REQUEST_TIMEOUT: 30000, // 30 seconds
   MAX_RETRIES: 3,
-  
+
   // Model filtering
   SERVERLESS_ONLY: true,
 } as const;

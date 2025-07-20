@@ -1,14 +1,11 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { Eye, EyeOff, Trash2 } from "lucide-react";
+import React from 'react';
 
-import { ModelSelector } from ".";
+import { Eye, EyeOff, Trash2 } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+
+import { ModelSelector } from '.';
 
 interface PlaygroundControlsProps {
   onModelChange: (model: string | null) => void;
@@ -26,8 +23,8 @@ function PlaygroundControls({
   hasMessages,
 }: PlaygroundControlsProps) {
   return (
-    <div className="bg-card rounded-lg shadow-sm border p-6 mb-6">
-      <div className="flex flex-col sm:flex-row gap-4 items-end">
+    <div className="bg-card mb-6 rounded-lg border p-6 shadow-sm">
+      <div className="flex flex-col items-end gap-4 sm:flex-row">
         <div className="flex-1">
           <ModelSelector onModelChange={onModelChange} />
         </div>
@@ -39,21 +36,15 @@ function PlaygroundControls({
                   variant="outline"
                   size="sm"
                   onClick={onToggleTiming}
-                  className="flex items-center gap-2 cursor-pointer"
+                  className="flex cursor-pointer items-center gap-2"
                 >
-                  {showTiming ? (
-                    <EyeOff className="h-4 w-4" />
-                  ) : (
-                    <Eye className="h-4 w-4" />
-                  )}
-                  {showTiming ? "Hide Timing" : "Show Timing"}
+                  {showTiming ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  {showTiming ? 'Hide Timing' : 'Show Timing'}
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
                 <p>
-                  {showTiming
-                    ? "Hide timing metrics"
-                    : "Show response time and token statistics"}
+                  {showTiming ? 'Hide timing metrics' : 'Show response time and token statistics'}
                 </p>
               </TooltipContent>
             </Tooltip>

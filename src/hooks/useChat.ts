@@ -1,5 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
 import { v4 as uuidv4 } from 'uuid';
+
 import ApiService from '@/lib/api';
 
 export interface ChatMessage {
@@ -84,23 +86,25 @@ export function useChat(selectedModel: string | null): ChatHookReturn {
       // Stream the response
       for await (const chunk of ApiService.parseStreamingResponse(response)) {
         assistantContent += chunk;
-        
-        setMessages(prev => prev.map(msg => 
-          msg.id === assistantMessageId 
-            ? { ...msg, content: assistantContent }
-            : msg
-        ));
+
+        setMessages(prev =>
+          prev.map(msg =>
+            msg.id === assistantMessageId ? { ...msg, content: assistantContent } : msg
+          )
+        );
       }
 
       const endTime = Date.now();
       const duration = endTime - startTime;
 
       // Update final message with timing
-      setMessages(prev => prev.map(msg => 
-        msg.id === assistantMessageId 
-          ? { ...msg, content: assistantContent, timing: { responseTime: duration } }
-          : msg
-      ));
+      setMessages(prev =>
+        prev.map(msg =>
+          msg.id === assistantMessageId
+            ? { ...msg, content: assistantContent, timing: { responseTime: duration } }
+            : msg
+        )
+      );
       return;
     } catch (error) {
       console.error('Error sending message:', error);
@@ -109,11 +113,13 @@ export function useChat(selectedModel: string | null): ChatHookReturn {
         setMessages(prev => prev.filter(msg => msg.id !== assistantMessageId));
       } else {
         // Show error message
-        setMessages(prev => prev.map(msg => 
-          msg.id === assistantMessageId 
-            ? { ...msg, content: 'Error: Failed to get response from the model.' }
-            : msg
-        ));
+        setMessages(prev =>
+          prev.map(msg =>
+            msg.id === assistantMessageId
+              ? { ...msg, content: 'Error: Failed to get response from the model.' }
+              : msg
+          )
+        );
       }
       // Remove the assistant message if there was an error (we'll need to identify it differently)
       setMessages(prev => prev.slice(0, -1)); // Remove the last message (assistant message)

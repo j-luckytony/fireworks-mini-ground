@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
-import { Model } from "@/types";
-import ApiService from "@/lib/api";
+import { useEffect, useState } from 'react';
+
+import { Model } from '@/types';
+
+import ApiService from '@/lib/api';
 
 export interface ModelsHookReturn {
   models: Model[];
@@ -30,7 +32,7 @@ export function useModels(): ModelsHookReturn {
           setSelectedModel(availableModels[0].name);
         }
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Failed to fetch models");
+        setError(err instanceof Error ? err.message : 'Failed to fetch models');
       } finally {
         setIsLoading(false);
       }

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Badge } from '@/components/ui/badge';
 
 interface StatusBarProps {
@@ -13,12 +14,8 @@ function StatusBar({ selectedModel, messageCount }: StatusBarProps) {
 
   return (
     <div className="mt-4 flex items-center gap-2">
-      <Badge variant="outline">
-        Model: {selectedModel}
-      </Badge>
-      <Badge variant="outline">
-        Messages: {messageCount}
-      </Badge>
+      <Badge variant="outline">Model: {selectedModel}</Badge>
+      <Badge variant="outline">Messages: {messageCount}</Badge>
     </div>
   );
 }

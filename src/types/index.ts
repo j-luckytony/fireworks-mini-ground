@@ -1,6 +1,6 @@
 export interface Model {
-  name: string;      // This is the model ID (e.g., "accounts/fireworks/models/kimi-k2-instruct")
-  title: string;     // This is the display name (e.g., "Kimi K2 Instruct")
+  name: string; // This is the model ID (e.g., "accounts/fireworks/models/kimi-k2-instruct")
+  title: string; // This is the display name (e.g., "Kimi K2 Instruct")
   description?: string;
   type?: string;
   serverless?: boolean;

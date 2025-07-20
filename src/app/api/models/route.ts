@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+
 import { FIREWORKS_CONFIG } from '@/server/config';
 
 export async function GET() {
@@ -17,9 +18,6 @@ export async function GET() {
     return NextResponse.json(models);
   } catch (error) {
     console.error('Error fetching models:', error);
-    return NextResponse.json(
-      { error: 'Failed to fetch models' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to fetch models' }, { status: 500 });
   }
 }
